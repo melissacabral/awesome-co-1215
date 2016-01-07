@@ -144,4 +144,54 @@ add_action('wp_print_scripts', 'comment_script');
 
 
 
+/**
+ * display a list of product thumbnails
+ * @param  integer $limit max number of products to show
+ * @param  string  $title title of the section
+ * @return html         displays the UL 
+ */
+
+function awesome_products( $limit = 5, $title = '' ){
+	//custom query to get 6 recent products
+	$product_query = new WP_Query( array(
+		'post_type' 		=> 'product', 
+		'posts_per_page' 		=> $limit,	//maximum
+	) );
+	//custom loop
+	if( $product_query->have_posts() ){
+	 ?>
+	 	<h2><?php echo $title; ?></h2>
+
+		<ul class="latest-products">
+			<?php while( $product_query->have_posts() ){
+					$product_query->the_post();
+			?>
+			<li>
+				<a href="<?php the_permalink(); ?>">
+					<?php the_post_thumbnail( 'thumbnail' ); ?>
+					
+					<div class="product-info">
+						<h3><?php the_title(); ?></h3>
+						<p><?php the_excerpt(); ?></p>
+					</div>
+				</a>
+			</li>
+			<?php } //end while ?>
+		</ul>
+	<?php }//end if 
+	//done with custom query. clean up!
+	wp_reset_postdata(); 
+}
+
+/**
+ * Example of how to customize a default loop
+ *  this will hide the category "uncategorized (1)" from the blog
+ */
+function awesome_exclude_category( $query ){
+	if( $query->is_home() ){
+		$query->set( 'cat', '-1' );
+	}
+}
+// add_action('pre_get_posts', 'awesome_exclude_category');
+
 //no close php

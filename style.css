@@ -753,6 +753,10 @@ footer#colophon .widget ul li {
 	margin: 0 1em 1em 0;
 	position:relative;
 }
+.single-product .hentry .wp-post-image{
+	float:right;
+	margin: 0 0 1em 1em;
+}
 .hentry .attachment-large {
 	float: none;
 	margin: 0 0 1em 0;
@@ -1262,9 +1266,9 @@ RSS Feed Image
 	text-align:center;
 	clear:none;
 }
-.post-type-archive-product .thumbnail,
-.tax-brand .thumbnail,
-.tax-feature .thumbnail{
+.post-type-archive-product .wp-post-image,
+.tax-brand .wp-post-image,
+.tax-feature .wp-post-image{
 	width:auto;
 	margin:0;
 	padding:0;

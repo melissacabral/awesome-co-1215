@@ -3,6 +3,9 @@
 <main id="content">
 	<?php //THE LOOP
 		if( have_posts() ): ?>
+
+		<h2 class="archive-title">Products by: <?php single_term_title(); ?></h2>
+
 		<?php while( have_posts() ): the_post(); ?>
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

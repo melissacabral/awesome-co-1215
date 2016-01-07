@@ -6,36 +6,28 @@
 		<?php while( have_posts() ): the_post(); ?>
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<?php the_post_thumbnail('thumbnail'); ?>
-
 			<h2 class="entry-title"> 
 				<a href="<?php the_permalink(); ?>"> 
 					<?php the_title(); ?> 
 				</a>
 			</h2>
 
-			<?php the_terms( $post->ID, 'brand', '<h3>by ', ' | ', '</h3>' ); ?>			
-
+			<?php the_terms( $post->ID, 'brand', '<h3>by ', ' | ', '</h3>' ); ?>
+			
+			<?php the_post_thumbnail('medium'); ?>
 			<div class="entry-content">
-				<?php the_excerpt(); ?>
-
-				
 				<?php 
-				$price = get_post_meta( $post->ID, 'price', true );
-				
-				if($price){ ?>
-				<span class="product-price">
-					<?php echo $price; ?>
-				</span>
-				<?php } ?>
-
+				//show a list of all custom fields
+				the_meta(); ?>
+				<?php the_content();?>
 			</div>
-					
+				
 		</article><!-- end post -->
 
 		<?php endwhile; ?>
 
 		<?php awesome_pagination(); ?>
+	
 
 	<?php else: ?>
 
@@ -46,5 +38,4 @@
 
 </main><!-- end #content -->
 
-<?php get_sidebar('shop'); //include sidebar-shop.php ?>
 <?php get_footer(); //include footer.php ?>

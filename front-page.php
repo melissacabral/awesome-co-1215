@@ -37,6 +37,10 @@
 
 	<?php endif;  //end THE LOOP ?>
 
+	<section id="featured-content">
+	<?php awesome_products( 6, 'Latest Products in the Shop:' ); ?>
+	</section>
+
 </main><!-- end #content -->
 
 <?php get_sidebar('frontpage'); //include sidebar-frontpage.php ?>

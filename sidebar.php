@@ -1,4 +1,8 @@
 <aside id="sidebar"> 
+	<section class="widget">
+		<?php awesome_products( 4, 'Shop Now!' ); ?>
+	</section>
+
 	<?php 
 	//if there are no widgets in the blog_sidebar, do some fallback content
 	if( ! dynamic_sidebar( 'blog_sidebar' ) ){ ?>
